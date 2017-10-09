@@ -40,6 +40,7 @@ using System.Windows;
                                               // app, or any theme specific resource dictionaries)
 )]
 
+[assembly: InternalsVisibleTo("TravelTogetherTests")]
 
 // Version information for an assembly consists of the following four values:
 //

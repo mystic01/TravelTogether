@@ -11,20 +11,33 @@ namespace TravelTogether
         public MainWindow()
         {
             InitializeComponent();
+            TogetherExecutor = new Executor();
         }
 
-        private void button_Add_Click(object sender, RoutedEventArgs e)
+        internal void button_Add_Click(object sender, RoutedEventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog())
+            using (var dialog = new FolderBrowserDialog())
             {
-                var result = fbd.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                var result = dialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
-                    //string[] files = Directory.GetFiles();
-                    //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
-                    listBox_Folder.Items.Add(fbd.SelectedPath);
+                    AddFolder(dialog.SelectedPath);
                 }
             }
+        }
+
+        internal Executor TogetherExecutor { get; set; }
+
+        internal void AddFolder(string path)
+        {
+            TogetherExecutor.FolderComponents.Add(new FolderComponent(path));
+            listBox_Folder.Items.Add(path);
+        }
+
+        internal void DeleteFolder(int i)
+        {
+            TogetherExecutor.FolderComponents.RemoveAt(i);
+            listBox_Folder.Items.RemoveAt(i);
         }
     }
 }

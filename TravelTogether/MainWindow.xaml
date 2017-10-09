@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelTogether"
         mc:Ignorable="d"
-        Title="Travel Together" Height="541.966" Width="716.966" FontSize="14" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Travel Together" Height="592.425" Width="885.162" FontSize="14" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="423" Margin="10,10,0,0" VerticalAlignment="Top" Width="683" TabStripPlacement="Left">
+        <TabControl x:Name="tabControl" Margin="10,10,10,64" TabStripPlacement="Left">
             <TabItem x:Name="TabItem_SelectFolder" Header="1. Select Folder" HorizontalAlignment="Left" Margin="-2" Width="150" Height="30" FontSize="14">
                 <Grid Background="#FFE5E5E5" Margin="0,-2,-2,2">
                     <Grid.ColumnDefinitions>
@@ -16,18 +16,44 @@
                     <Button x:Name="button_Add" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="10,10,0,0" Click="button_Add_Click"/>
                     <Button x:Name="button_Add_Copy" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="55,10,0,0" IsEnabled="False"/>
                     <ListBox x:Name="listBox_Folder" Margin="10,50,10,10"/>
+                    <Button x:Name="button_MoveUp" Content="up" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="102,10,0,0" Click="button_Add_Click"/>
+                    <Button x:Name="button_MoveDown" Content="down" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="160,10,0,0" Click="button_Add_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItem_Rotation" Header="2. Rotation" HorizontalAlignment="Left" Width="150" Margin="-2" Height="30" FontSize="14" d:IsLocked="True">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <CheckBox x:Name="checkBox" Content="Enable" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
-            <TabItem x:Name="TabItem_Sync" Header="3. Synchronization" HorizontalAlignment="Left" Height="30" Width="150" Margin="-2" FontSize="14" d:IsLocked="True">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem x:Name="TabItem_Sync" Header="3. Synchronization" HorizontalAlignment="Left" Height="30" Width="150" Margin="-2" FontSize="14">
+                <Grid Background="#FFE5E5E5" d:IsLocked="True">
+                    <Label x:Name="label" Content="Base Folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.49,0.484"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="101,12,0,0" VerticalAlignment="Top" Width="414"/>
+                    <ScrollViewer Margin="0,50,0,0">
+                        <GroupBox x:Name="groupBox" Header="Folder 1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="180" Margin="10,0">
+                            <Grid HorizontalAlignment="Right" Margin="0" Width="651" d:IsLocked="True">
+                                <Label x:Name="label_Folder1" Content="Folder 1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.49,0.484" Width="99"/>
+                                <Button x:Name="button" Margin="0,10,39,0" Height="50" HorizontalAlignment="Right" Width="50" VerticalAlignment="Top">
+                                    <Image x:Name="image" Height="30" Width="30" d:IsLocked="True"/>
+                                </Button>
+                                <Button x:Name="button_Copy" Margin="562,65,39,0" Height="50" VerticalAlignment="Top">
+                                    <Image x:Name="image1" Height="30" Width="30" d:IsLocked="True"/>
+                                </Button>
+                                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="545,120,0,0" TextWrapping="Wrap" Text="00：02：00" VerticalAlignment="Top" Width="85"/>
+                            </Grid>
+                        </GroupBox>
+                    </ScrollViewer>
+                </Grid>
             </TabItem>
             <TabItem x:Name="TablItem_Rename" Header="4. Rename " Height="30" HorizontalAlignment="Left" Margin="-2" Width="150" FontSize="14" d:IsLocked="True">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem x:Name="TabItem_Copy" Header="5. Copy or Move" HorizontalAlignment="Left" Height="30" Width="150" Margin="-2">
+                <Grid Background="#FFE5E5E5" d:IsLocked="True"/>
+            </TabItem>
         </TabControl>
+        <Button x:Name="button_GO" Content="Go!!" Margin="701,519,118,14" Width="60"/>
+        <Button x:Name="button_Close" Content="Close" Margin="0,519,28,14" HorizontalAlignment="Right" Width="60"/>
 
     </Grid>
 </Window>
