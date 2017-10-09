@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Documents;
-using FluentAssert;
+using ExpectedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TravelTogether.Tests
@@ -12,12 +12,12 @@ namespace TravelTogether.Tests
         public void AddFolderTest_AddASimplePath()
         {
             var target = new MainWindow();
-            var expected = @"C:\";
+            var expected = new List<FolderComponent> { new FolderComponent(@"C:\") };
 
             target.AddFolder(@"C:\");
 
-            var actual = target.TogetherExecutor.FolderComponents[0].Path;
-            Assert.AreEqual(expected, actual);
+            var actual = target.TogetherExecutor.FolderComponents;
+            expected.ToExpectedObject().ShouldEqual(actual);
         }
 
         [TestMethod()]
@@ -26,13 +26,12 @@ namespace TravelTogether.Tests
             var target = new MainWindow();
             target.AddFolder(@"C:\");
             target.AddFolder(@"D:\");
-            var expectedSize = 1;
-            var expectedPath = @"C:\";
+            var expected = new List<FolderComponent> { new FolderComponent(@"C:\") };
 
             target.DeleteFolder(1);
 
-            Assert.AreEqual(expectedSize, target.TogetherExecutor.FolderComponents.Count);
-            Assert.AreEqual(expectedPath, target.TogetherExecutor.FolderComponents[0].Path);
+            var actual = target.TogetherExecutor.FolderComponents;
+            expected.ToExpectedObject().ShouldEqual(actual);
         }
     }
 }

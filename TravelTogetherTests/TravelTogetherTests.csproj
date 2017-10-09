@@ -36,14 +36,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssert, Version=1.0.0.11, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssert.1.0.0.11\lib\FluentAssert.dll</HintPath>
+    <Reference Include="ExpectedObjects, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpectedObjects.2.3.2\lib\net40\ExpectedObjects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
@@ -67,11 +77,6 @@
       <Project>{3C234D86-BDD4-406E-AFCD-4F28BE55D413}</Project>
       <Name>TravelTogether</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FluentAssert.License.txt" />
-    <Content Include="FluentAssert.Provenance.txt" />
-    <Content Include="FluentAssert.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
