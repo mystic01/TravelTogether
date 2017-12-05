@@ -51,6 +51,8 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -74,6 +76,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EXIFextractor\EXIFextractor.csproj">
+      <Project>{748E81BC-D466-4E39-99AA-372ACBC2BB1E}</Project>
+      <Name>EXIFextractor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelTogether\TravelTogether.csproj">
       <Project>{3C234D86-BDD4-406E-AFCD-4F28BE55D413}</Project>
       <Name>TravelTogether</Name>
@@ -81,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LEGO.jpg" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

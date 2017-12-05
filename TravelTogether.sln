@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelTogether", "TravelTog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelTogetherTests", "TravelTogetherTests\TravelTogetherTests.csproj", "{9E411CB4-607E-476B-833E-A210576D7790}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXIFextractor", "EXIFextractor\EXIFextractor.csproj", "{748E81BC-D466-4E39-99AA-372ACBC2BB1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9E411CB4-607E-476B-833E-A210576D7790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E411CB4-607E-476B-833E-A210576D7790}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E411CB4-607E-476B-833E-A210576D7790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{748E81BC-D466-4E39-99AA-372ACBC2BB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{748E81BC-D466-4E39-99AA-372ACBC2BB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{748E81BC-D466-4E39-99AA-372ACBC2BB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{748E81BC-D466-4E39-99AA-372ACBC2BB1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -27,6 +28,11 @@ namespace TravelTogether
                     File.Move(file, newFileName);
                 }
             }
+        }
+
+        public void Rotate()
+        {
+            throw new NotImplementedException();
         }
     }
 }
