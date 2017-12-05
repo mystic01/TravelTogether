@@ -29,7 +29,7 @@ namespace TravelTogether.Tests
         }
 
         [TestMethod()]
-        public void RenameTest_In_Folder1_Folder2_Add_TimeStamp_And_Name()
+        public void RenameTest_Set_Jpg_In_2_Folders_To_TimeStamp_And_Name()
         {
             var target = new Executor();
 
