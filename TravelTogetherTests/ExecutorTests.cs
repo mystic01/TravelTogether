@@ -17,8 +17,8 @@ namespace TravelTogether.Tests
     {
         private static List<string> _readyToCleanUpFolder = new List<string>();
 
-        [ClassCleanup]
-        public static void CleanUp()
+        [TestCleanup()]
+        public void CleanUp()
         {
             foreach (var folder in _readyToCleanUpFolder)
             {
@@ -28,6 +28,7 @@ namespace TravelTogether.Tests
                 }
                 Directory.Delete(folder);
             }
+            _readyToCleanUpFolder.Clear();
         }
 
         [TestMethod()]
@@ -96,6 +97,10 @@ namespace TravelTogether.Tests
             if (!(img.Width == img1.Width && img.Height == img1.Height
                 && img.Width == img2.Height && img.Height == img2.Width))
                 Assert.Fail();
+
+            img.Dispose();
+            img1.Dispose();
+            img2.Dispose();
         }
 
         private void SetOrientationValue(string bitmapPath, Orientation direction)

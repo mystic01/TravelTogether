@@ -20,38 +20,44 @@ namespace TravelTogether
 
         public void Rename()
         {
-            foreach (var folderCompo in FolderComponents)
-            {
-                var folder = folderCompo.Path;
-                foreach (var file in Directory.GetFiles(folder, "*.jpg"))
+            TakeFolderComponents((folderCompo, file) =>
                 {
                     var timeFormat = @"yyyy_MM_dd_HH_mm_ss_fff";
-                    var newFileName = Path.Combine(folder,
+                    var newFileName = Path.Combine(folderCompo.Path,
                         folderCompo.TimeStamp.AddMilliseconds(folderCompo.TimeShifting).ToString(timeFormat)
                         + "_" + folderCompo.Author + ".jpg");
                     File.Move(file, newFileName);
                 }
-            }
+            );
         }
 
         public void Rotate()
         {
             const string tmpFile = "TMPFILE";
-            foreach (var folderCompo in FolderComponents)
-            {
-                var folder = folderCompo.Path;
-                foreach (var file in Directory.GetFiles(folder, "*.jpg"))
+            TakeFolderComponents((folderCompo, file) =>
                 {
                     var rotateFilpType = GetRotateFilpTypeViaExif(file);
                     var bmp = new Bitmap(file);
                     bmp.RotateFlip(rotateFilpType);
                     bmp.Save(tmpFile, ImageFormat.Jpeg);
                     bmp.Dispose();
-                    Thread.Sleep(2000);
                     File.Delete(file);
                     File.Move(tmpFile, file);
                 }
+            );
+        }
+
+        private void TakeFolderComponents(Action<FolderComponent, string> action)
+        {
+            foreach (var folderCompo in FolderComponents)
+            {
+                var folder = folderCompo.Path;
+                foreach (var file in Directory.GetFiles(folder, "*.jpg"))
+                {
+                    action(folderCompo, file);
+                }
             }
+
         }
 
         private RotateFlipType GetRotateFilpTypeViaExif(string file)
