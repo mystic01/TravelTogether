@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using Goheer.EXIF;
@@ -82,7 +84,6 @@ namespace TravelTogether.Tests
             var stubJpgPath2 = Path.Combine(folderName2, stubJpgName);
             File.Copy(stubJpgPath, stubJpgPath1, true);
             File.Copy(stubJpgPath, stubJpgPath2, true);
-
             SetOrientationValue(stubJpgPath1, Orientation.Horizontal);
             SetOrientationValue(stubJpgPath2, Orientation.Rotate90CW);
 
@@ -99,9 +100,18 @@ namespace TravelTogether.Tests
 
         private void SetOrientationValue(string bitmapPath, Orientation direction)
         {
-            var bmp = new Bitmap(bitmapPath);
-            var exif = new EXIFextractor(ref bmp, "\n");
-            exif.setTag(0x0112, direction.ToString());
+            const int ExifOrientationId = 0x0112;
+            const string tmpFile = "TMPFILE";
+            var bmp = new Bitmap(bitmapPath, true);
+            if (!bmp.PropertyIdList.Contains(ExifOrientationId))
+                return;
+            var prop = bmp.GetPropertyItem(ExifOrientationId);
+            prop.Value = BitConverter.GetBytes((short)direction);
+            bmp.SetPropertyItem(prop);
+            bmp.Save(tmpFile, ImageFormat.Jpeg);
+            bmp.Dispose();
+            File.Delete(bitmapPath);
+            File.Move(tmpFile, bitmapPath);
         }
 
         private string CreateAFileInFolder(string folderName)
